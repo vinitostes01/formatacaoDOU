@@ -1,0 +1,188 @@
+---
+title: "D.O.U"
+author: Extrato D.O.U
+date: "`r Sys.Date()`"
+#params:
+#  data: NA
+output:
+  pagedown::html_resume:
+    self_contained: True
+#knit: pagedown::chrome_print  
+---
+
+```{r include=FALSE}
+Sys.setlocale("LC_ALL", "pt_BR.UTF-8") 
+library(lubridate)
+library(dplyr)
+library(glue)
+library(httr)
+library(rvest)
+library(stringr)
+library(stringi)
+library(tidyr)
+date_var = paste0("Edição de ",day(Sys.Date()), " de ",str_to_title(month(Sys.Date(),label = T,abbr = F,locale = "pt_BR.UTF-8")))
+date_var3 = paste0(day(Sys.Date()), " de ",str_to_title(month(Sys.Date(),label = T,abbr = F,locale = "pt_BR.UTF-8"))," de ", year(Sys.Date()))
+date_var2 = paste0("de ", year(Sys.Date()))
+```
+
+```{r css, echo=FALSE, results='asis'}
+cat(glue(.open = "<<", .close = ">>", "
+<style>
+div > div.pagedjs_pagebox > div.pagedjs_margin-bottom:before{
+content: '<<date_var3>>';
+    margin-left: 70px;
+    margin-top: 75px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    font-style: italic;
+}
+}
+</style>
+"))
+```
+
+
+```{css echo=FALSE}
+.fa.fa-newspaper.fa-xl{
+  margin-top: 12px;
+  margin-left: -5px;
+}
+h2::after{
+  border-left: 0 !important;
+}
+.containert {
+  width: 180px;
+  text-align: center;
+  margin: 0;
+  margin-top: 55px;
+}
+
+h1 {
+  font-family: "Times New Roman";
+}
+
+p {
+  font-size: 0.8rem;
+}
+
+h1, h2 {
+  text-transform: none;
+}
+
+div > div.pagedjs_pagebox > div.pagedjs_margin-bottom{
+  background-image: url(/rodape.png);
+  background-size: 100% auto; /* A imagem terá 100% da largura do elemento */
+    background-repeat: no-repeat;
+  background-position: center;
+}
+#page-1 > div > div.pagedjs_pagebox > div.pagedjs_margin-top{
+background-image: url(/topo.png);
+background-size: cover;
+padding-top: 135px;
+padding-bottom: 125px;
+}
+
+[data-id="title"] h1{
+  color: #fff;
+    padding-right: 500px;
+  font-size: 2rem;
+  padding-left: 25px;
+  font-family: "Bahnschrift SemiLight Condensed";
+}
+
+[data-id="title"] h3 {
+  font-size: 0.8rem;
+  padding-left: 5px;
+  color: #fff;
+}
+
+#title\.data > h3{
+font-size: 0.8rem;
+margin-top: 50px;
+margin-left: 16px;
+}
+#de-2023 > h3{
+font-size: 0.8rem;
+margin-left: 60px;
+}
+
+#d\.o\.u > h3{
+padding-left: 25px;
+padding-right: 500px;
+font-size: 3.2rem;
+margin-top: -10px;
+font-family: "Gill Sans Nova Cond XBd";
+}
+.fa-newspaper:before {
+  color: #000;
+    margin-left: -2px;
+}
+[data-id="main"] h2>i {
+  padding-left: 0rem;
+}
+[data-id="main"] {
+  padding: 0 0in 0 0in;
+}
+.decorator::after {
+  padding-left: 0.05rem;
+}
+:root {
+  --sidebar-background-color: #ffffff;
+    --sidebar-width: 30rem;
+  --decorator-border: 1px solid #000;
+  --decorator-padding-left: 5rem;
+}
+.pagedjs_page {
+  --pagedjs-margin-top: 60px;
+  --pagedjs-margin-left: 0in;
+  --pagedjs-margin-right: 0in;
+}
+[data-id="main"] {
+  width: 100%;
+}
+
+#title{
+margin-bottom: 1in;
+}
+.main-block.concise .details div:not(.concise) {
+  padding-left: 60px;
+  padding-top: 10px;
+}
+div.details > div > p {
+  padding-left: 60px;
+  padding-top: 10px;
+  padding-right: 40px;
+}
+a:-webkit-any-link {
+  font-weight: bold;
+  text-decoration: underline;
+  color: #337ab7;
+}
+body {
+  color: #000;
+}
+[data-id="main"] h2 {
+  color: #000;
+}
+.decorator::after{
+  background-color: #000;
+}
+
+```
+
+# Main
+
+## Extrato {#title}
+
+### D.O.U
+
+<div class="containert">
+### `r date_var` {#title.data}
+### `r date_var2`{#central}
+</div>
+
+
+
+
